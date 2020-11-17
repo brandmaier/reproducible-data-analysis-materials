@@ -28,9 +28,17 @@ background-size: contain
 
 ---
 
+class: clear middle center large
+
+## Your closest collaborator is you six months ago, but you don’t reply to emails.
+
+.footnote[From Karl Broman's lecture, paraphrasing Mark Holden]
+
+--
 background-image: url(images/markus-spiske-yUTgdQkbd7c-unsplash.jpg)
 background-size: 38% 38%
 background-position: right top
+
 
 # Sources of Failure to Reproduce Results
 
@@ -64,31 +72,22 @@ class: left, middle, inverse
 background-image: url(http://3.bp.blogspot.com/-c7bI_n5oXd0/U7vTYArmRoI/AAAAAAAAKoQ/3JkxLM2PRKo/s1600/gospels-meme.jpg)
 background-position: right
 
+&lt;!-- -----------------------------
+
+Part: Version Control
+
+--------------------------------- --&gt;
+
 # Version Control
 
-
 ---
 
-class: clear
-background-image: url(images/screenshot_github_releases.png)
-background-size: contain
 
-# Releases
+&lt;!-- -----------------------------
 
----
+Dependency Management
 
-background-image: url(https://rstudio.com/wp-content/uploads/2014/04/rmarkdown.png)
-background-size: 20% 38%
-background-position: right top
-
-# Dynamic Document Generation
-
----
-
-# Containerization
-
-
----
+--------------------------------- --&gt;
 
 # Dependency Management
 
@@ -98,11 +97,6 @@ background-position: right top
 
 ---
 
-## Steps in A Data Analysis
-
-Things that we do 
-
-- 
 
 ## Standardized Makefile
 
@@ -116,7 +110,37 @@ Things that we do
 
 ## Example Makefile
 
+
+```bash
+all: manuscript.pdf
+
+manuscript.pdf: data/iris_prepped.csv manuscript.Rmd
+  Rscript -e 'rmarkdown::render("manuscript.Rmd")'
+
+data/iris_prepped.csv: R/prepare_data.R data/iris.csv
+  Rscript -e 'source("R/prepare_data.R")'
+```
+
+
 ---
+
+---
+class: left, middle, inverse
+background-image: url(https://www.docker.com/sites/default/files/d8/2019-07/horizontal-logo-monochromatic-white.png)
+background-position: right
+
+&lt;!-- -----------------------------
+
+Containerization
+
+--------------------------------- --&gt;
+
+# Containerization
+---
+
+background-image: url(https://www.docker.com/sites/default/files/d8/2019-07/Docker-Logo-White-RGB_Vertical.png)
+background-position: top, right
+background-size: 50% 50%
 
 ## Docker
 
@@ -170,12 +194,71 @@ sort(state.abb)
 
 ---
 
+# Docker
+
+#### Docker is basically a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
+
+Sharing a container:
+- the entire container (few gigabytes)
+- using a short recipe how to create a container (few kilobytes), or
+
+
+With recipes, we provide machine-readable instructions how to create a container from publicly available sources, e.g., 
+Rocker project (Boettiger &amp; Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
+Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
+
+---
+
+#### Docker containers 
+
+- guarantee identical execution of its contents across platforms (and time) 
+
+--
+
+- can run interactively: R/Rstudio can run in the container (i.e., there is no need to ever run the analysis in your local computing environment)
+
+--
+
+- Analyses can be run in different containers (simulating different package versions) to find out what downstream updates broke your code / your results
+
+
+---
+
+class: clear
+background-image: url(images/screenshot_github_releases.png)
+background-size: contain
+
+# Releases
+
+---
+&lt;!-- -----------------------------
+
+Part: Dynamic Document Generation
+
+--------------------------------- --&gt;
+
+background-image: url(https://rstudio.com/wp-content/uploads/2014/04/rmarkdown.png)
+background-size: 20% 38%
+background-position: right top
+class: inverse
+
+
+# Dynamic Document Generation
+
+---
+
 # The `repro` package
 
 Takes care of all tedious and error-prone tasks
 
 - automatically writes a container file
 - automatically writes a Makefile
+
+---
+
+class: center inverse
+
+# Live Demo
 
 ---
 
@@ -191,11 +274,19 @@ Provide software infrastructure and computational environments
 
 ---
 
+class: inverse clean center middle
+
+# Thank you!
+
+---
+
 # License Information
 
 - This presentation is distributed under CC-BY 4.0
 - The ananas image on the front page was provided under the Unsplash License.
 - The GNU logo was provided under the Free Art License.
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -1,0 +1,33 @@
+---
+title: "A Reproducible Data Analysis Workflow with R Markdown, Git, Make, and Docker"
+author: "Andreas M. Brandmaier"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, 'custom.css']
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# Hi!
+
+###Four Elements for Ensuring Reproducibility
+
+- Version Control
+- Dependency Management
+- Literate Programming
+- Containerization
+
+---
+
+class:inverse, clear
+background-image: url(images/screenshot_preprint_repro.png)
+background-size: contain
+
+---

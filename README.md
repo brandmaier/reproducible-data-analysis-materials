@@ -9,6 +9,16 @@ computational reproducibility of scientific analyses.
 
 This approach is suitable for R users that appreciate full computational reproducibility. 
 
+## Installation
+
+You can install the latest version of the `repro` package for R from
+[GitHub](https://github.com/aaronpeikert/repro) with:
+
+``` r
+if(!requireNamespace("remotes"))install.packages("remotes")
+remotes::install_github("aaronpeikert/repro")
+```
+
 ## Further reading
 
   - [Read the preprint](https://psyarxiv.com/8xzqy/)

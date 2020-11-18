@@ -126,6 +126,9 @@ data/iris_prepped.csv: R/prepare_data.R data/iris.csv
   Rscript -e 'source("R/prepare_data.R")'
 ```
 
+--
+
+Further examples: download a remote file, remove lines from a file, correct faulty data entries, call an external program
 
 ---
 
@@ -157,9 +160,27 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 ---
 
+# The easy way
+
+- The R package `renv` helps you to set up and restore project-specific local environments in R
+
+- Create a private R library with `renv::init()` (the project will now always rely on the local library)
+
+- Update a library with `renv::snapshot()` 
+
+- Restore a library with `renv::restore()` 
+
+--
+
+### But is this enough?
+
+---
+
 # Examples of Non-Reproducible Code in R
 
-1.	Bugfix in random number generator in R between R 3.5 and R 3.6
+Here are some examples of non-reproducible code that cannot be captured easily from within a given R environment
+
+### 1.	Bugfix in random number generator in R between R 3.5 and R 3.6
 
 ```{r eval=FALSE}
 set.seed(1234); 
@@ -170,21 +191,26 @@ sample(1:10, 5)
 
 ```{r eval=FALSE}
 2 6 5 8 9 (R3.5)
+```
 
+--
+
+```{r eval=FALSE}
 10 6 5 4 1 (R3.6.1)
 ```
 --
 
-2.	Loading data has different defaults from R 4.0+
-	`read.csv()` now has stringsAsFactors = TRUE
+### 2.	Loading data has different defaults from R 4.0+
+
+`read.csv()` now has stringsAsFactors = TRUE
 	
-	Code that assumes default behavior may break
+Code that assumes default behavior (which later may change) may break
 
 ---
 
 #  Examples of Non-Reproducible Code in R
 	
-3.	Locale-dependent behavior (e.g., English vs Lithuania):
+### 3.	Locale-dependent behavior (e.g., English vs Lithuania):
 
 ````{r eval=FALSE}
 sort(state.abb) 
@@ -216,7 +242,7 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 # Containers
 
-#### Docker containers 
+### Docker containers 
 
 - guarantee identical execution of its contents across platforms (and time) 
 
@@ -238,28 +264,39 @@ Part: Dynamic Document Generation
 
 --------------------------------- -->
 
-background-image: url(https://rstudio.com/wp-content/uploads/2014/04/rmarkdown.png)
-background-size: 20% 38%
-background-position: right top
-class: inverse
-
-
 # Dynamic Document Generation
 
+---
+
+# X
+
+.left[ ![](images/screenshot_rmarkdown_papaja1.png)]
+.right[ ![](images/screenshot_rmarkdown_papaja2.png)]
+
+---
+
+# Y
+
+![](images/screenshot_rmarkdown_raw.png)
+![](images/screenshot_rmarkdown_rendered.png)
 ---
 
 # The `repro` package
 
 Takes care of all tedious and error-prone tasks
 
-- automatically writes a container file
+- automatically writes a Container file
 - automatically writes a Makefile
 
 ---
 
 class: center inverse
+background-image: url(images/feng-HO2GGotLtgs-unsplash.jpg)
+background-size: contain
 
 # Live Demo
+
+
 
 ---
 

@@ -1,7 +1,12 @@
-#
-# obtained from https://github.com/cjvanlissa/worcshop/blob/master/docs/custom.css
-# licensed under CC-BY 4.0
-#
+/*<!--
+ modified and obtained from https://github.com/cjvanlissa/worcshop/blob/master/docs/custom.css
+ licensed under CC-BY 4.0
+-->
+*/
+
+.title-slide {
+  background-size: cover;
+}
 
 .small {
   font-size: 50%;
@@ -18,7 +23,11 @@
 
 .title-slide > h1, .title-slide > h2, .title-slide > h3 {
   color: #303030;
+  text-shadow: 1px 1px 10px #FFFFFF, -1px -1px 10px #FFFFFF;
+  width: 40%;
 }
+
+
 
 .inverse {
   background-color: #0070C0;
@@ -44,11 +53,14 @@ a, a > code {
 
 
 .title-slide {
-  /*background-image: url(slides_version-control_files/figure-html/git.svg);*/
+/*  background-image: url(slides_version-control_files/figure-html/git.svg);*/
+    background-image: url(images/pineapple-supply-co-RLak_xZb5sU-unsplash.jpg);
   background-color: #FFFFFF;
   background-size: cover;
   border-top: 0;
 }
+
+
 
 /* IMAGES */
 img[alt=learningcurve] {height: 250px; margin: 0 150px;}

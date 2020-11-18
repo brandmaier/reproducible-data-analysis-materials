@@ -32,15 +32,13 @@ class: clear middle center large
 
 ## Your closest collaborator is you six months ago, but you don’t reply to emails.
 
-.footnote[From Karl Broman's lecture, paraphrasing Mark Holden]
+.footnote[From Karl Broman's lecture on reproducibility, paraphrasing Mark Holden]
 
---
-background-image: url(images/markus-spiske-yUTgdQkbd7c-unsplash.jpg)
-background-size: 38% 38%
-background-position: right top
-
+---
 
 # Sources of Failure to Reproduce Results
+
+.pull-right[ ![](images/markus-spiske-yUTgdQkbd7c-unsplash.jpg) ]
 
 1. *Multiple versions of scripts/data* (e.g., dataset has changed over, i.e., was further cleaned or extended)
 
@@ -55,6 +53,8 @@ background-position: right top
 --
 
 4. Broken *software dependencies* (e.g., analysis broken after update, missing package)
+
+
 
 
 ---
@@ -82,21 +82,31 @@ Part: Version Control
 
 ---
 
+class: clear
+background-image: url(images/screenshot_github_releases.png)
+background-size: contain
+
+# Releases
+
+---
 
 &lt;!-- -----------------------------
 
 Dependency Management
 
 --------------------------------- --&gt;
+background-image: url(images/claudio-schwarz-purzlbaum-qjX0QBtDXto-unsplash.jpg)
+background-size: 20% 38%
+background-position: right top
 
 # Dependency Management
+
+
+---
 
 background-image: url(https://www.gnu.org/graphics/empowered-by-gnu.svg)
 background-size: 20% 38%
 background-position: right top
-
----
-
 
 ## Standardized Makefile
 
@@ -176,8 +186,10 @@ sample(1:10, 5)
 	`read.csv()` now has stringsAsFactors = TRUE
 	
 	Code that assumes default behavior may break
-	
---
+
+---
+
+#  Examples of Non-Reproducible Code in R
 	
 3.	Locale-dependent behavior (e.g., English vs Lithuania):
 
@@ -199,8 +211,9 @@ sort(state.abb)
 #### Docker is basically a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
 
 Sharing a container:
-- the entire container (few gigabytes)
-- using a short recipe how to create a container (few kilobytes), or
+
+- the entire _container_ (few gigabytes)
+- using a short _recipe_ how to create a container (few kilobytes), or
 
 
 With recipes, we provide machine-readable instructions how to create a container from publicly available sources, e.g., 
@@ -208,6 +221,8 @@ Rocker project (Boettiger &amp; Eddelbuettel, 2017), with pre-configured Docker 
 Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
 
 ---
+
+# Containers
 
 #### Docker containers 
 
@@ -224,13 +239,7 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 ---
 
-class: clear
-background-image: url(images/screenshot_github_releases.png)
-background-size: contain
 
-# Releases
-
----
 &lt;!-- -----------------------------
 
 Part: Dynamic Document Generation

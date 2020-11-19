@@ -444,7 +444,7 @@ check_git()
 ```
 
 ```
-## ✔ Git is installed, don't worry.
+## ✓ Git is installed, don't worry.
 ```
 
 ```r
@@ -452,7 +452,7 @@ check_make()
 ```
 
 ```
-## ✔ Make is installed, don't worry.
+## ✓ Make is installed, don't worry.
 ```
 
 ```r
@@ -460,7 +460,7 @@ check_docker()
 ```
 
 ```
-## ✔ Docker is installed, don't worry.
+## ✓ Docker is installed, don't worry.
 ```
 
 ---
@@ -469,11 +469,9 @@ check_docker()
 
 - Either add components with commands such as `use_make()` or `use_docker()` or `use_git()`
 
-- Use `repro::automate()` adds all components:
+- Use `repro::automate()` to setup _all_ components
 
   - creates a Dockerfile &amp; Makefile based on every RMarkdown in the project folder
-
-  - prepares YAML header
 
 ---
 
@@ -481,7 +479,16 @@ check_docker()
 
 
 ```r
-rerun(cache = FALSE)
+rerun()
+```
+
+```
+## ● To reproduce this project, run the following code in a terminal:
+```
+
+```
+##   make docker &amp;&amp;
+##   make -B DOCKER=TRUE
 ```
 
 The argument `cache = FALSE` ensures that everything that can be recreated

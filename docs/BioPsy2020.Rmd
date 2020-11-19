@@ -439,19 +439,20 @@ check_docker()
 
 - Either add components with commands such as `use_make()` or `use_docker()` or `use_git()`
 
-- Use `repro::automate()` adds all components:
+- Use `repro::automate()` to setup _all_ components
 
   - creates a Dockerfile & Makefile based on every RMarkdown in the project folder
-
-  - prepares YAML header
 
 ---
 
 # Reproduction
 
-```{r eval=FALSE}
-rerun(cache = FALSE)
+To reproduce a project completely inside a container:
+
+```{r eval=TRUE}
+rerun()
 ```
+
 
 The argument `cache = FALSE` ensures that everything that can be recreated
 is recreated even when nothing was changed.
@@ -478,6 +479,11 @@ We need academic repositories for scientific software/environments that
 - are freely accessible (no commercial interests)
 - guarantee long-term reproducibility (independent of short-term grants)
 - provide software infrastructure and computational environments
+
+We need scientific software to be maintained
+
+- Make, Docker, git
+- but note that repro itself is not needed to reproduce a workflow that was created with repro
 
 ---
 

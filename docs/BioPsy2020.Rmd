@@ -78,7 +78,18 @@ Part: Version Control
 
 ---
 
-# Tracking Changes
+# Version Control
+
+### Version Control
+
+- Version control system (VCS) records changes to a set of files over time so that you can restore specific versions
+later.
+
+- VCS guarantee that code and data are exactly the same
+version as used for publication.
+
+- Reduces the number of dead or dysfunctional code lines (deletion is safe and branches help separate productive and experimental code)
+
 
 ![](images/screenshot_github_compare.png)
 ---
@@ -122,7 +133,14 @@ background-position: right top
 
 # GNU Make
 
-### A Standardized Makefile
+
+### Challenge
+
+What files are executable and in which order are they to be executed?
+
+--
+
+### Solution: Makefile
 
 
 - contains a number of recipes
@@ -135,8 +153,16 @@ background-position: right top
 
 # Example Makefile
 
+### Makefile Schema
 
-### A Makefile looks like this:
+```{bash, eval=FALSE}
+recipe name: ingredients
+  instructions
+```
+
+--
+
+### An example Makefile
 ```{bash, eval=FALSE}
 all: manuscript.pdf
 
@@ -169,7 +195,7 @@ background-image: url(https://www.docker.com/sites/default/files/d8/2019-07/Dock
 background-position: top, right
 background-size: 50% 50%
 
-## Docker
+# Docker
 
 Docker is a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
 
@@ -178,10 +204,17 @@ Docker is a shareable virtual machine that runs identically on any computer (Lin
 
 --
 
-Recipes: machine-readable instructions how to create a container from publicly available sources, e.g., 
+Recipes are machine-readable instructions how to create a container from publicly available sources, e.g., 
 
 -   Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
 -   Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
+
+```{bash, eval=FALSE}
+FROM rocker/verse:3.6.1
+ARG BUILD_DATE=2019-11-11
+RUN install2.r --error --skipinstalled here lavaan
+WORKDIR /home/rstudio
+```
 
 ---
 
@@ -344,6 +377,46 @@ Takes care of all tedious and error-prone tasks:
 --
 
 - manages your Makefile
+
+---
+
+# YAML header (R Markdown)
+
+`repro` extends the YAML header of R Markdown to track dependencies on _packages_, _scripts_, and _data_.
+
+```{r, eval=FALSE}
+---
+title: My worst academic fails
+author: Andreas Brandmaier
+date: 2020-11-17
+output: html_document
+---
+```
+
+---
+
+# YAML header (repro)
+
+`repro` extends the YAML header of R Markdown to track dependencies on code and data.
+
+```{r, eval=FALSE}
+---
+title: My worst academic fails
+author: Andreas Brandmaier
+date: 2020-11-17
+repro:
+  packages:
+    - usethis
+    - fs
+    - aaronpeikert/repro@d09def75df
+  scripts:
+    - R/clean.R
+  data:
+    mycars: data/mtcars.csv
+output: html_document
+---
+```
+
 
 ---
 

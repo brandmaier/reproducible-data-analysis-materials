@@ -11,7 +11,7 @@ output:
       countIncrementalSlides: false
 repro:
   packages:
-    - usethis
+    - xaringan
           
 background-image: url(images/pineapple-supply-co-RLak_xZb5sU-unsplash)
 background-size: contain

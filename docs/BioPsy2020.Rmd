@@ -78,6 +78,11 @@ Part: Version Control
 
 ---
 
+# Tracking Changes
+
+![](images/screenshot_github_compare.png)
+---
+
 class: clear
 background-image: url(images/screenshot_github_releases.png)
 background-size: contain
@@ -86,16 +91,27 @@ background-size: contain
 
 ---
 
-<!-- -----------------------------
+# Long-Term Storage
 
-Dependency Management
+- GitHub has no long-term guarantuees for availability of their service
 
---------------------------------- -->
+--
+
+- (even though they do LOCKSS, for Lots Of Copies Keeps Stuff Safe, e.g., the Artic World Archive)
+
+--
+
+- Mirror snapshots with meta-data and DOI to other providers (e.g., Zenodo, FigShare, OSF)
+
+---
+
 background-image: url(images/claudio-schwarz-purzlbaum-qjX0QBtDXto-unsplash.jpg)
-background-size: 20% 38%
+background-size: cover
 background-position: right top
+class: left, middle, inverse, clear
 
-# Dependency Management
+
+# <br><br><br><br><br>Dependency Management
 
 
 ---
@@ -104,7 +120,10 @@ background-image: url(https://www.gnu.org/graphics/empowered-by-gnu.svg)
 background-size: 20% 38%
 background-position: right top
 
-## Standardized Makefile
+# GNU Make
+
+### A Standardized Makefile
+
 
 - contains a number of recipes
 - Each recipe contains its dependencies and commands to create a product
@@ -114,8 +133,10 @@ background-position: right top
 
 ---
 
-## Example Makefile
+# Example Makefile
 
+
+### A Makefile looks like this:
 ```{bash, eval=FALSE}
 all: manuscript.pdf
 
@@ -128,9 +149,7 @@ data/iris_prepped.csv: R/prepare_data.R data/iris.csv
 
 --
 
-Further examples: download a remote file, remove lines from a file, correct faulty data entries, call an external program
-
----
+Further examples: download a remote file, remove lines from a file using `sed` stream editor, correct faulty data entries, call an external program, etc.
 
 ---
 class: left, middle, inverse
@@ -152,11 +171,17 @@ background-size: 50% 50%
 
 ## Docker
 
-Docker is basically a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
-You can either provide a short recipe how to create a container (few kilobytes) or the entire container (few gigabytes)
-With recipes, we provide machine-readable instructions how to create a container from publicly available sources, e.g., 
-Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
-Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
+Docker is a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
+
+- You can either provide a short recipe how to create a container (few kilobytes) or 
+- the entire container (few gigabytes)
+
+--
+
+Recipes: machine-readable instructions how to create a container from publicly available sources, e.g., 
+
+-   Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
+-   Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
 
 ---
 
@@ -170,9 +195,9 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 - Restore a library with `renv::restore()` 
 
---
+.footnote[cf. the WORCS approach by van Lissa et al. (2020)]
 
-### But is this enough?
+### But is this really enough?
 
 ---
 
@@ -199,6 +224,10 @@ sample(1:10, 5)
 10 6 5 4 1 (R3.6.1)
 ```
 --
+
+---
+
+# Examples of Non-Reproducible Code in R
 
 ### 2.	Loading data has different defaults from R 4.0+
 
@@ -257,6 +286,10 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 ---
 
+class: left, middle, clear
+background-image: url(images/neven-krcmarek-V4EOZj7g1gw-unsplash.jpg)
+background-position: right middle
+background-size: cover
 
 <!-- -----------------------------
 
@@ -264,29 +297,77 @@ Part: Dynamic Document Generation
 
 --------------------------------- -->
 
-# Dynamic Document Generation
+# <br><br><br><br><br>Dynamic Document<br>Generation
 
 ---
 
-# X
+# R Markdown Example
 
-.left[ ![](images/screenshot_rmarkdown_papaja1.png)]
-.right[ ![](images/screenshot_rmarkdown_papaja2.png)]
-
----
-
-# Y
-
+.pull-left[
 ![](images/screenshot_rmarkdown_raw.png)
+]
+..pull-right[
 ![](images/screenshot_rmarkdown_rendered.png)
+]
 ---
+
+# Number reporting (APA style)
+
+.pull-left[
+![](images/screenshot_rmarkdown_apa.png)
+]
+
+.pull-right[
+![](images/screenshot_rmarkdown_apa2.png)
+
+]
+
+---
+
+# Reporting statistics with papaja
+
+.pull-left[ ![](images/screenshot_rmarkdown_papaja1.png)]
+.pull-right[ ![](images/screenshot_rmarkdown_papaja2.png)]
+
+---
+
+
 
 # The `repro` package
 
-Takes care of all tedious and error-prone tasks
+Takes care of all tedious and error-prone tasks:
 
-- automatically writes a Container file
-- automatically writes a Makefile
+--
+
+- manages your Container file
+
+--
+
+- manages your Makefile
+
+---
+
+# System setup with `repro`
+
+```{r echo=FALSE,eval=TRUE, message=FALSE}
+library(repro)
+```
+
+```{r}
+check_git()
+check_make()
+check_docker()
+```
+
+---
+
+# Project setup with `repro`
+
+- Use `repro::automate()`
+
+- creates a Dockerfile & Makefile based on every RMarkdown in the project folder
+
+- prepares YAML header
 
 ---
 
@@ -306,22 +387,31 @@ background-size: contain
 #### Long-term sustainability is a continuing challenge for the community
 
 We need academic repositories for scientific software/environments that
-Are freely accessible (no commercial interests)
-Guarantue long-term reproducibility (independent of short-term grants)
-Provide software infrastructure and computational environments
+
+- are freely accessible (no commercial interests)
+- guarantee long-term reproducibility (independent of short-term grants)
+- provide software infrastructure and computational environments
 
 ---
 
-class: inverse clean center middle
-
 # Thank you!
+
+If you want to know more:
+
+  - Ask us a question via a [github issue](https://github.com/aaronpeikert/repro/issues)
+  - Follow [@brandmaier](https://twitter.com/brandmaier) on twitter
+  - Read our [preprint](https://psyarxiv.com/8xzqy/)
+  - Check our [repro](https://github.com/aaronpeikert/repro) repository on GitHub
+  - Read Aaron's [slides on repro](https://github.com/aaronpeikert/repro-talk)
+
+
 
 ---
 
 # License Information
 
 - This presentation is distributed under CC-BY 4.0
-- The ananas image on the front page was provided under the Unsplash License.
+- The ananas image on the title and other unsplash images were provided under the Unsplash License.
 - The GNU logo was provided under the Free Art License.
 
 ---

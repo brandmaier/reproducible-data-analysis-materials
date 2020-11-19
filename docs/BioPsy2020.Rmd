@@ -9,7 +9,10 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      
+repro:
+  packages:
+    - usethis
+          
 background-image: url(images/pineapple-supply-co-RLak_xZb5sU-unsplash)
 background-size: contain
 ---
@@ -434,19 +437,24 @@ check_docker()
 
 # Project setup with `repro`
 
-- Use `repro::automate()`
+- Either add components with commands such as `use_make()` or `use_docker()` or `use_git()`
 
-- creates a Dockerfile & Makefile based on every RMarkdown in the project folder
+- Use `repro::automate()` adds all components:
 
-- prepares YAML header
+  - creates a Dockerfile & Makefile based on every RMarkdown in the project folder
+
+  - prepares YAML header
 
 ---
 
 # Reproduction
 
-```{r}
+```{r eval=FALSE}
 rerun(cache = FALSE)
 ```
+
+The argument `cache = FALSE` ensures that everything that can be recreated
+is recreated even when nothing was changed.
 
 ---
 

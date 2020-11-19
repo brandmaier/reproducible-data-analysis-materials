@@ -262,17 +262,11 @@ sample(1:10, 5)
 
 # Examples of Non-Reproducible Code in R
 
-### 2.	Loading data has different defaults from R 4.0+
-
-`read.csv()` now has stringsAsFactors = TRUE
-	
-Code that assumes default behavior (which later may change) may break
-
 ---
 
 #  Examples of Non-Reproducible Code in R
 	
-### 3.	Locale-dependent behavior (e.g., English vs Lithuania):
+### 2.	Locale-dependent behavior (e.g., English vs Lithuania):
 
 ````{r eval=FALSE}
 sort(state.abb) 
@@ -422,9 +416,13 @@ output: html_document
 
 # System setup with `repro`
 
-```{r echo=FALSE,eval=TRUE, message=FALSE}
+Load the package:
+
+```{r echo=TRUE,eval=TRUE, message=FALSE}
 library(repro)
 ```
+
+Run some checks:
 
 ```{r}
 check_git()
@@ -441,6 +439,14 @@ check_docker()
 - creates a Dockerfile & Makefile based on every RMarkdown in the project folder
 
 - prepares YAML header
+
+---
+
+# Reproduction
+
+```{r}
+rerun(cache = FALSE)
+```
 
 ---
 

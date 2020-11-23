@@ -90,7 +90,7 @@ Part: Version Control
 
 .pull-left[
 
-- Version control system (VCS) records changes to a set of files over time so that you can restore specific versions
+- Version control systems (VCS) such as `git` record changes to a set of files over time so that you can restore specific versions
 later.
 
 - VCS guarantee that code and data are exactly the same
@@ -110,7 +110,7 @@ version as used for publication.
 background-image: url(images/screenshot_github_releases.png)
 background-size: contain
 
-# Releases
+# Releases on github.com
 
 ---
 
@@ -520,5 +520,3 @@ If you want to know more:
 - This presentation is distributed under CC-BY 4.0
 - The ananas image on the title and other unsplash images were provided under the Unsplash License.
 - The GNU logo was provided under the Free Art License.
-
----

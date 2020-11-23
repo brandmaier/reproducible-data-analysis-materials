@@ -480,7 +480,7 @@ We need academic repositories for scientific software/environments that
 - guarantee long-term reproducibility (independent of short-term grants)
 - provide software infrastructure and computational environments
 
-We need scientific software to be maintained
+We need scientific software to be maintained:
 
 - Make, Docker, git
 - but note that repro itself is not needed to reproduce a workflow that was created with repro

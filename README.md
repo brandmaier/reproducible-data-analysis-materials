@@ -19,6 +19,14 @@ if(!requireNamespace("remotes"))install.packages("remotes")
 remotes::install_github("aaronpeikert/repro")
 ```
 
+## Presentations
+
+This is my presentation on the workflow for the *Online Symposium:
+Reproducing Analyses in Biological Psychology* (Nov 23, 2020) organized by early career researchers of the DGPA and the
+DGPS: [Slides](https://brandmaier.github.io/reproducible-data-analysis-materials/BioPsy2020.html#1)
+
+_The presentation source code is fully reproducible._
+
 ## Further reading
 
   - [Read the preprint](https://psyarxiv.com/8xzqy/)

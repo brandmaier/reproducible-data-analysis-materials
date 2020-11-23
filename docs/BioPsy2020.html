@@ -477,6 +477,8 @@ check_docker()
 
 # Reproduction
 
+To reproduce a project completely inside a container:
+
 
 ```r
 rerun()
@@ -490,6 +492,7 @@ rerun()
 ##   make docker &amp;&amp;
 ##   make -B DOCKER=TRUE
 ```
+
 
 The argument `cache = FALSE` ensures that everything that can be recreated
 is recreated even when nothing was changed.
@@ -516,6 +519,11 @@ We need academic repositories for scientific software/environments that
 - are freely accessible (no commercial interests)
 - guarantee long-term reproducibility (independent of short-term grants)
 - provide software infrastructure and computational environments
+
+We need scientific software to be maintained:
+
+- Make, Docker, git
+- but note that repro itself is not needed to reproduce a workflow that was created with repro
 
 ---
 

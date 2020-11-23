@@ -303,7 +303,7 @@ sample(1:10, 5)
 
 # Examples of Non-Reproducible Code in R
 
-Confidence intervals (95%) of a simple regression coefficient estimate:
+Confidence intervals (95%) of a simple regression coefficient estimate (with identical random seed):
 
 .pull-left[
 
@@ -458,7 +458,7 @@ output: html_document
 
 ---
 
-# System setup with `repro`
+# System setup with repro
 
 Load the package:
 
@@ -525,8 +525,6 @@ rerun()
 ```
 
 
-The argument `cache = FALSE` ensures that everything that can be recreated
-is recreated even when nothing was changed.
 
 ---
 
@@ -535,13 +533,13 @@ is recreated even when nothing was changed.
 	
 ## Long-term sustainability is a continuing challenge for the community
 
-- We need academic repositories for scientific software/environments that
+- We need academic repositories that
 
   - are freely accessible (no commercial interests)
   - guarantee long-term reproducibility (independent of short-term grants)
   - provide not only disk space but software infrastructure and computational environments
 
-- We need to better recognize the efforts of maintaining scientific software (such as repro) and curating digital collections
+- We need to better recognize the efforts of maintaining scientific software (such as repro and many others) and curating digital collections
 
 ---
 
@@ -552,7 +550,7 @@ If you want to know more:
   - Ask us a question via a [github issue](https://github.com/aaronpeikert/repro/issues)
   - Follow [@brandmaier](https://twitter.com/brandmaier) on twitter
   - Read our [preprint](https://psyarxiv.com/8xzqy/)
-  - Check our [repro](https://github.com/aaronpeikert/repro) repository on GitHub
+  - Contribute to our [repro](https://github.com/aaronpeikert/repro) repository on GitHub
   - Read Aaron's [slides on repro](https://github.com/aaronpeikert/repro-talk)
 
 

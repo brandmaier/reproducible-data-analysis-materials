@@ -14,6 +14,7 @@ output:
 repro:
   packages:
     - xaringan
+    - aaronpeikert/repro@d09def75df
           
 background-image: url(images/pineapple-supply-co-RLak_xZb5sU-unsplash)
 background-size: contain
@@ -182,11 +183,11 @@ which of those files are executable and in which order are they to be executed?
 	
 - Management of all external dependencies in one file via (dependend) targets, such as 
 
-- Installing extra software
+  - Installing extra software
 
-- Starting external programs (such as pre-processing pipelines)
+  - Starting external programs (such as pre-processing pipelines)
 
-- Downloading data from external repositories
+  - Downloading data from external repositories
 
 ---
 
@@ -470,7 +471,7 @@ check_docker()
 
 - creates a Dockerfile & Makefile based on every RMarkdown in the project folder
 
-- use `automate_load_packages()` to load all packages in your script and  `automate_load_scripts()` to attach external scripts
+- use `automate_load_packages()` to load all packages in your script, `automate_load_data`() for data, and  `automate_load_scripts()` to attach external scripts
 
 ---
 

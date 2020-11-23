@@ -3,6 +3,10 @@ title: "Overview"
 author: "Andreas M. Brandmaier"
 date: "11/19/2020"
 output: html_document
+repro:
+  packages:
+    - xaringan
+    - aaronpeikert/repro@d09def75df
 ---
 
 ```{r setup, include=FALSE}

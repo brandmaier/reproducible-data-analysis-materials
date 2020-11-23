@@ -1,6 +1,8 @@
 ---
 title: "A Reproducible Data Analysis Workflow with R Markdown, Git, Make, and Docker"
 author: "Andreas M. Brandmaier"
+date: "2020-11-23"
+
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, 'custom.css']
@@ -58,12 +60,13 @@ class: clear middle center large
 
 ---
 
-background-image: url(images/nutshell.svg)
-background-size: contain
-background-size: 90% 90%
-background-position: center
-
 # Four Elements of Reproducibility
+
+<center>
+<img src="images/nutshell.svg" width="90%" />
+</center>
+
+.footnote[from Peikert and Brandmaier (2020)]
 
 ---
 
@@ -85,6 +88,8 @@ Part: Version Control
 
 ### Version Control
 
+.pull-left[
+
 - Version control system (VCS) records changes to a set of files over time so that you can restore specific versions
 later.
 
@@ -93,11 +98,15 @@ version as used for publication.
 
 - Reduces the number of dead or dysfunctional code lines (deletion is safe and branches help separate productive and experimental code)
 
+]
+
+.pull-right[
 
 ![](images/screenshot_github_compare.png)
+
+]
 ---
 
-class: clear
 background-image: url(images/screenshot_github_releases.png)
 background-size: contain
 
@@ -107,7 +116,7 @@ background-size: contain
 
 # Long-Term Storage
 
-- GitHub has no long-term guarantuees for availability of their service
+- GitHub has no long-term guarantees for the availability of its service
 
 --
 
@@ -116,6 +125,8 @@ background-size: contain
 --
 
 - Mirror snapshots with meta-data and DOI to other providers (e.g., Zenodo, FigShare, OSF)
+
+- This helps making the repository (F)indable (as in FAIR)
 
 ---
 
@@ -139,18 +150,43 @@ background-position: right top
 
 ### Challenge
 
-What files are executable and in which order are they to be executed?
+.pull-left[
+Once someone found our files... 
+which of those files are executable and in which order are they to be executed?
+]
 
---
+---
 
-### Solution: Makefile
+# Solution: Make
 
+## A Makefile
 
 - contains a number of recipes
-- Each recipe contains its dependencies and commands to create a product
+
+- Each recipe contains its ingredients (=dependencies) and commands to create the product
+
 - There is a default recipe (defined entry point)
-- There is an „all“ recipe to create everything 
+
+- By convention, there is an „all“ recipe to create everything 
+
 - Recipes can depend on other recipes and files
+
+---
+
+# Make
+
+## Why Make?
+
+- A single, well-defined entry point for your analysis (default target):
+	`make`
+	
+- Management of all external dependencies in one file via (dependend) targets, such as 
+
+- Installing extra software
+
+- Starting external programs (such as pre-processing pipelines)
+
+- Downloading data from external repositories
 
 ---
 
@@ -176,10 +212,6 @@ data/iris_prepped.csv: R/prepare_data.R data/iris.csv
   Rscript -e 'source("R/prepare_data.R")'
 ```
 
---
-
-Further examples: download a remote file, remove lines from a file using `sed` stream editor, correct faulty data entries, call an external program, etc.
-
 ---
 class: left, middle, inverse
 background-image: url(https://www.docker.com/sites/default/files/d8/2019-07/horizontal-logo-monochromatic-white.png)
@@ -200,16 +232,16 @@ background-size: 50% 50%
 
 # Docker
 
-Docker is a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
+A Docker container is like a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
 
 - You can either provide a short recipe how to create a container (few kilobytes) or 
 - the entire container (few gigabytes)
 
 --
 
-Recipes are machine-readable instructions how to create a container from publicly available sources, e.g., 
+Recipes are instructions how to create a container from publicly available sources, e.g., 
 
--   Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
+-   Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Debian images including R/Rstudio
 -   Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
 
 ```{bash, eval=FALSE}
@@ -259,11 +291,32 @@ sample(1:10, 5)
 ```{r eval=FALSE}
 10 6 5 4 1 (R3.6.1)
 ```
---
 
 ---
 
 # Examples of Non-Reproducible Code in R
+
+Confidence intervals (95%) of a simple regression coefficient estimate:
+
+.pull-left[
+```{r eval=FALSE}
+[1] "R version 3.5.0 (2018-04-23)"
+
+2.5 % 97.5 %
+ 0.0097 0.3842
+```
+]
+
+.pull-right[
+```{r eval=FALSE}
+ [1] "R version 3.6.1 (2019-07-05)"
+
+ 2.5 % 97.5 %
+ -0.0005 0.3748
+```
+]
+
+.footnote[Note that the results are not reproduced but replicated.]
 
 ---
 
@@ -283,27 +336,12 @@ sort(state.abb)
 
 ---
 
-# Docker
-
-#### Docker is basically a shareable virtual machine that runs identically on any computer (Linux, macOS, Windows)
-
-Sharing a container:
-
-- the entire _container_ (few gigabytes)
-- using a short _recipe_ how to create a container (few kilobytes), or
-
-
-With recipes, we provide machine-readable instructions how to create a container from publicly available sources, e.g., 
-Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Docker images including R/Rstudio
-Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“
-
----
 
 # Containers
 
 ### Docker containers 
 
-- guarantee identical execution of its contents across platforms (and time) 
+- guarantee identical execution of its contents across platforms (and time) including cloud computing
 
 --
 
@@ -315,6 +353,7 @@ Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time
 
 
 ---
+
 
 class: left, middle, clear
 background-image: url(images/neven-krcmarek-V4EOZj7g1gw-unsplash.jpg)
@@ -341,7 +380,7 @@ Part: Dynamic Document Generation
 ]
 ---
 
-# Number reporting (APA style)
+# Number reporting (APA style) with papaja
 
 .pull-left[
 ![](images/screenshot_rmarkdown_apa.png)
@@ -361,25 +400,15 @@ Part: Dynamic Document Generation
 
 ---
 
+class: clear middle inverse
 
-
-# The `repro` package
-
-Takes care of all tedious and error-prone tasks:
-
---
-
-- manages your Container file
-
---
-
-- manages your Makefile
+# The repro package
 
 ---
 
 # YAML header (R Markdown)
 
-`repro` extends the YAML header of R Markdown to track dependencies on _packages_, _scripts_, and _data_.
+A standard YAML header:
 
 ```{r, eval=FALSE}
 ---
@@ -437,11 +466,11 @@ check_docker()
 
 # Project setup with `repro`
 
-- Either add components with commands such as `use_make()` or `use_docker()` or `use_git()`
+- Use `repro::automate()` to make an existing analysis reproducible
 
-- Use `repro::automate()` to setup _all_ components
+- creates a Dockerfile & Makefile based on every RMarkdown in the project folder
 
-  - creates a Dockerfile & Makefile based on every RMarkdown in the project folder
+- use `automate_load_packages()` to load all packages in your script and  `automate_load_scripts()` to attach external scripts
 
 ---
 
@@ -459,31 +488,18 @@ is recreated even when nothing was changed.
 
 ---
 
-class: center inverse
-background-image: url(images/feng-HO2GGotLtgs-unsplash.jpg)
-background-size: contain
-
-# Live Demo
-
-
-
----
-
 # Outlook
 
 	
-#### Long-term sustainability is a continuing challenge for the community
+## Long-term sustainability is a continuing challenge for the community
 
-We need academic repositories for scientific software/environments that
+- We need academic repositories for scientific software/environments that
 
-- are freely accessible (no commercial interests)
-- guarantee long-term reproducibility (independent of short-term grants)
-- provide software infrastructure and computational environments
+  - are freely accessible (no commercial interests)
+  - guarantee long-term reproducibility (independent of short-term grants)
+  - provide not only disk space but software infrastructure and computational environments
 
-We need scientific software to be maintained:
-
-- Make, Docker, git
-- but note that repro itself is not needed to reproduce a workflow that was created with repro
+- We need to better recognize the efforts of maintaining scientific software (such as repro) and curating digital collections
 
 ---
 

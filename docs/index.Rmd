@@ -6,7 +6,6 @@ output: html_document
 repro:
   packages:
     - xaringan
-    - aaronpeikert/repro@d09def75df
 ---
 
 ```{r setup, include=FALSE}

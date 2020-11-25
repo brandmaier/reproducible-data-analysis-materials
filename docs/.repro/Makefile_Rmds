@@ -1,0 +1,6 @@
+BioPsy2020.html: BioPsy2020.Rmd
+	$(RUN1) Rscript -e 'rmarkdown::render("$(WORKDIR)/$<", "all")' $(RUN2)
+
+index.html: index.Rmd
+	$(RUN1) Rscript -e 'rmarkdown::render("$(WORKDIR)/$<", "all")' $(RUN2)
+

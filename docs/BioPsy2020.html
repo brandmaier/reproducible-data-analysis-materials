@@ -490,28 +490,7 @@ check_docker()
 ```
 
 ```
-## ✖ Docker is not installed.
-```
-
-```
-## ℹ Adapt to your native package manager (deb, rpm, brew, csw, eopkg).
-```
-
-```
-## ℹ You may need admin-rights, use `sudo apt install docker` in this case.
-```
-
-```
-## ● Run `apt install docker` in a terminal to install docker.
-```
-
-```
-## ● Add your user to the docker user group. Follow instructions on:
-##   'https://docs.docker.com/install/linux/linux-postinstall/'
-```
-
-```
-## ● Consider restarting your computer.
+## ✔ You are inside a Docker container!
 ```
 
 ---
@@ -533,9 +512,17 @@ To reproduce a project completely inside a container:
 
 ```r
 library(repro)
-#rerun()
+rerun()
 ```
 
+```
+## ● To reproduce this project, run the following code in a terminal:
+```
+
+```
+##   make docker &amp;&amp;
+##   make -B DOCKER=TRUE
+```
 
 
 ---

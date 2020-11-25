@@ -1,0 +1,4 @@
+RUN install2.r --error --skipinstalled \ 
+  xaringan
+RUN installGithub.r \ 
+  aaronpeikert/repro@4957dbcf3e5c787365e5e8918f6364681788bf15

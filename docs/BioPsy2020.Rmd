@@ -481,10 +481,10 @@ check_docker()
 
 To reproduce a project completely inside a container:
 
-```{r eval=FALSE}
+```{r eval=TRUE}
+library(repro)
 rerun()
 ```
-
 
 
 ---

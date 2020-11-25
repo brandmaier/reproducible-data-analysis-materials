@@ -14,7 +14,7 @@ output:
 repro:
   packages:
     - xaringan
-    - aaronpeikert/repro@d09def75df
+    - aaronpeikert/repro@4957dbcf3e5c787365e5e8918f6364681788bf15
           
 background-image: url(images/pineapple-supply-co-RLak_xZb5sU-unsplash)
 background-size: contain
@@ -22,6 +22,8 @@ background-size: contain
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+
+repro::automate_load_packages()
 ```
 
 class: clear
@@ -479,7 +481,7 @@ check_docker()
 
 To reproduce a project completely inside a container:
 
-```{r eval=TRUE}
+```{r eval=FALSE}
 rerun()
 ```
 

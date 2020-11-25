@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Andreas M. Brandmaier" />
     <meta name="date" content="2020-11-23" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
@@ -475,7 +474,7 @@ check_git()
 ```
 
 ```
-## ✓ Git is installed, don't worry.
+## ✔ Git is installed, don't worry.
 ```
 
 ```r
@@ -483,7 +482,7 @@ check_make()
 ```
 
 ```
-## ✓ Make is installed, don't worry.
+## ✔ Make is installed, don't worry.
 ```
 
 ```r
@@ -491,7 +490,28 @@ check_docker()
 ```
 
 ```
-## ✓ Docker is installed, don't worry.
+## ✖ Docker is not installed.
+```
+
+```
+## ℹ Adapt to your native package manager (deb, rpm, brew, csw, eopkg).
+```
+
+```
+## ℹ You may need admin-rights, use `sudo apt install docker` in this case.
+```
+
+```
+## ● Run `apt install docker` in a terminal to install docker.
+```
+
+```
+## ● Add your user to the docker user group. Follow instructions on:
+##   'https://docs.docker.com/install/linux/linux-postinstall/'
+```
+
+```
+## ● Consider restarting your computer.
 ```
 
 ---
@@ -513,15 +533,6 @@ To reproduce a project completely inside a container:
 
 ```r
 rerun()
-```
-
-```
-## ● To reproduce this project, run the following code in a terminal:
-```
-
-```
-##   make docker &amp;&amp;
-##   make -B DOCKER=TRUE
 ```
 
 

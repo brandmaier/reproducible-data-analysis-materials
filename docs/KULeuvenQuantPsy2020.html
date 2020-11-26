@@ -24,9 +24,28 @@ class: center, middle, inverse, title-slide
 
 
 
+
+class: center
+
+# Replication ≠ Reproduction
+
+&lt;br&gt;&lt;br&gt;
+
+## Replicability: 
+### Same conclusion from same analysis and new data
+
+&lt;br&gt;&lt;br&gt;
+--
+
+## Reproducibility: 
+### Same conclusion from same analysis and same data
+
+---
+
 class: clear
-background-image: url(images/screenshot_preprint_repro.png)
-background-size: contain
+
+![](images/screenshot_preprint_repro.png)
+
 
 ---
 
@@ -38,7 +57,20 @@ class: clear middle center large
 
 ---
 
+# Reproducibility is hard!
+
+- Hardwicke et al. (2018): Out of 35 articles in _Cognition_, 22 could be reproduced but 11 of those required authors' assistance. For 13 articles, at least one outcome could not be reproduced even with the original authors' assistance.
+
+--
+
+- Obels et al. (2020) show that in 62 Registered Reports, 41 had data available, 37 had analysis scripts available. The authors could run 31 of the scripts and reproduced 21 articles (within reasonable amount of time)
+
+.footnote[https://doi.org/10.1098/rsos.180448 and https://doi.org/10.1177%2F2515245920918872]
+
+---
+
 # Sources of Failure to Reproduce Results
+
 
 .pull-right[ ![](images/markus-spiske-yUTgdQkbd7c-unsplash.jpg) ]
 
@@ -106,6 +138,22 @@ version as used for publication.
 ![](images/screenshot_github_compare.png)
 
 ]
+---
+
+# Issues 
+
+![](images/screenshot-github-issues1.png)
+---
+
+# Issues 
+
+![](images/screenshot-issues2.png)
+---
+
+# Issues 
+
+![](images/screenshot-github-issues3.png)
+
 ---
 
 background-image: url(images/screenshot_github_releases.png)
@@ -240,7 +288,25 @@ A Docker container is like a shareable virtual machine that runs identically on 
 - You can either provide a short recipe how to create a container (few kilobytes) or 
 - the entire container (few gigabytes)
 
---
+---
+
+# Docker Recipes
+
+Recipes are instructions how to create a container from publicly available sources, e.g., 
+
+-   Rocker project (Boettiger &amp; Eddelbuettel, 2017), with pre-configured Debian images including R/Rstudio
+
+
+```bash
+*FROM rocker/verse:3.6.1
+ARG BUILD_DATE=2019-11-11
+RUN install2.r --error --skipinstalled here lavaan
+WORKDIR /home/rstudio
+```
+
+---
+
+# Docker Recipes
 
 Recipes are instructions how to create a container from publicly available sources, e.g., 
 
@@ -251,9 +317,10 @@ Recipes are instructions how to create a container from publicly available sourc
 ```bash
 FROM rocker/verse:3.6.1
 ARG BUILD_DATE=2019-11-11
-RUN install2.r --error --skipinstalled here lavaan
+*RUN install2.r --error --skipinstalled here lavaan
 WORKDIR /home/rstudio
 ```
+
 
 ---
 

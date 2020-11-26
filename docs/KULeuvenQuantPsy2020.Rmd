@@ -254,6 +254,7 @@ recipe name: ingredients
 --
 
 ### An example Makefile
+
 ```{bash, eval=FALSE}
 all: manuscript.pdf
 
@@ -296,6 +297,7 @@ A Docker container is like a shareable virtual machine that runs identically on 
 Recipes are instructions how to create a container from publicly available sources, e.g., 
 
 -   Rocker project (Boettiger & Eddelbuettel, 2017), with pre-configured Debian images including R/Rstudio
+<p style="color:white">- Microsoft R Application Network (MRAN) providing CRAN snapshots in their „time machine“</p>
 
 ```{bash, eval=FALSE}
 {{FROM rocker/verse:3.6.1}}
@@ -376,6 +378,8 @@ Confidence intervals (95%) of a simple regression coefficient estimate (with ide
  0.0097 0.3842
 ```
 ]
+
+--
 
 .pull-right[
 ```{r eval=FALSE}

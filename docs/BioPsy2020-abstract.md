@@ -1,0 +1,3 @@
+# A Reproducible Data Analysis Workflow with R Markdown, Git, Make, & Docker
+ 
+In this talk, I describe a workflow to ensure long-term reproducibility of data analyses in the R statistical computing environment. The workflow ensures meeting the primary goals that 1) the reporting of statistical results is consistent with the actual statistical results (dynamic report generation), 2) the analysis exactly reproduces at a later point in time even if the computing platform or software is changed (computational reproducibility), and 3) changes at any time (during development and post-publication) are tracked, tagged, and documented while earlier versions of both data and code remain accessible. 
